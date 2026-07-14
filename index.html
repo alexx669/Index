@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Raquel 💖</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            min-height:100vh;
+            display:flex;justify-content:center;align-items:center;
+            font-family:Arial,sans-serif;text-align:center;
+            overflow:hidden;background:#0a0a2a
+        }
+
+        /* PANTALLA INICIO: OSITOS */
+        .inicio{
+            position:fixed;inset:0;
+            background:url('https://i.imgur.com/g9MvD3R.png') center 30% no-repeat,
+                       url('https://i.imgur.com/h7Y7v9f.png') center 70% no-repeat;
+            background-size:150px 150px;background-color:rgba(10,10,42,0.9);
+            display:flex;flex-direction:column;justify-content:center;align-items:center;
+            opacity:1;transition:all 2s ease;z-index:100;cursor:pointer
+        }
+        .inicio.oculto{opacity:0;transform:scale(0.8);pointer-events:none}
+        .texto-inicio{
+            font-size:1.8rem;color:#e0c8ff;margin-top:260px;
+            text-shadow:0 0 10px rgba(224,200,255,0.5)
+        }
+
+        /* FONDO GALAXIA */
+        .fondo-galaxia{
+            position:fixed;inset:0;
+            background:url('https://i.imgur.com/w9zQx1u.gif') center/cover no-repeat,
+                       url('https://i.imgur.com/h2Q7f23.gif') center/cover no-repeat;
+            background-blend-mode:overlay;z-index:-1
+        }
+
+        /* MENSAJE PRINCIPAL */
+        .contenido{
+            position:relative;width:90%;max-width:480px;
+            padding:45px 25px;background:rgba(0,0,0,0.55);
+            border-radius:25px;border:2px solid rgba(255,255,255,0.25);
+            box-shadow:0 10px 35px rgba(0,0,0,0.6);
+            opacity:0;transform:scale(0.8);transition:all 2s ease;
+            animation:flotar 6s ease-in-out infinite
+        }
+        .contenido.visible{opacity:1;transform:scale(1)}
+
+        .corazon{
+            position:absolute;top:-75px;left:50%;transform:translateX(-50%);
+            width:140px;height:140px;
+            background:url('https://i.imgur.com/fF8y5tB.gif') center/cover no-repeat;
+            border-radius:50%;box-shadow:0 0 30px #9400d3,0 0 50px #ba55d3;
+            animation:latir 3s ease-in-out infinite
+        }
+
+        h1{font-size:3.2rem;color:#e0c8ff;margin-bottom:10px;text-shadow:0 0 15px #e0c8ff}
+        .nombre{font-size:2.3rem;color:#f0e68c;font-weight:bold;margin-bottom:25px}
+        .mensaje{font-size:1.2rem;color:#fff;line-height:1.7}
+
+        @keyframes flotar{
+            0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}
+        }
+        @keyframes latir{
+            0%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.1)}100%{transform:translateX(-50%) scale(1)}
+        }
+    </style>
+</head>
+<body>
+
+<div class="inicio" id="pantallaInicio">
+    <p class="texto-inicio">✨ Toca aquí para abrir ✨</p>
+</div>
+
+<div class="fondo-galaxia"></div>
+
+<div class="contenido" id="pantallaFinal">
+    <div class="corazon"></div>
+    <h1>Para:</h1>
+    <div class="nombre">Raquel 💖</div>
+    <p class="mensaje">
+        ¡Feliz Cumpleaños! 🎉🎂<br><br>
+        Eres la persona más especial de todo mi universo.<br>
+        Gracias por iluminar mi vida como las estrellas ✨<br>
+        Te quiero muchísimo 🫶
+    </p>
+</div>
+
+<script>
+const inicio = document.getElementById('pantallaInicio');
+const final = document.getElementById('pantallaFinal');
+
+function abrir(){
+    inicio.classList.add('oculto');
+    setTimeout(()=>final.classList.add('visible'), 1000);
+}
+
+inicio.addEventListener('click', abrir);
+setTimeout(abrir, 5000); // Se abre solo si no toca
+</script>
+
+</body>
+</html>
